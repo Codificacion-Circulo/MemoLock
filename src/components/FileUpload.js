@@ -1,7 +1,8 @@
-import {useState} from 'react';
+import {Fragment,useState} from 'react';
 import './FileUpload.css'
 import { Link } from 'react-router-dom';
 import { create } from 'ipfs-http-client'
+import Card from '../components/Card'
 const client = create('https://ipfs.infura.io:5001/api/v0')
 const FileUpload = props => {
     const [name,setName]= useState('');
@@ -12,6 +13,7 @@ const FileUpload = props => {
     const [link, setLink] = useState('');
     const [message, setMessage] = useState('');
     const [uploading, setUploading] = useState(false);
+    const [modal,setModal] = useState(false);
 
     const onChange = e => {
         setFile(e.target.files[0]);
@@ -42,6 +44,7 @@ const FileUpload = props => {
             setFilename('Choose a file');
             setFile('');
             setUploading(false);
+            setModal(true);
     }
 
     const nameChangeHandler = (event) => {
@@ -56,23 +59,27 @@ const FileUpload = props => {
     const cpasswordChangeHandler = (event) => {
         setCPassword(event.target.value)
     }
-
+    const modalChangeHandler=()=>{
+        setModal(false);
+    }
 
 
 
     return (
+        <Fragment>
+        {modal&&<Card onClose={modalChangeHandler} link={link}/>}
         <form onSubmit={formSubmission}>
         <div class="row">
             <h2 class="details">Details</h2>
             <div class="input_field authtitle">
-                <input type="text" id="title" name="title" placeholder="File Name" required="true" onChange={nameChangeHandler} value={name} />
+                <input type="text" id="fname" name="fname" placeholder="File Name" required="true" onChange={nameChangeHandler} value={name} />
             </div>
         </div>
         <div class="row">
             <h2 class="details">Password</h2>
             <div class="input_field authtitle">
-            <input type="password" id="author" name="author" placeholder="Password" required="true" onChange={passwordChangeHandler} value={password} />
-                <input type="password" id="author" name="author" placeholder="Confirm Password" required="true" onChange={cpasswordChangeHandler} value={cpassword} />
+            <input type="password" id="password" name="password" placeholder="Password" required="true" onChange={passwordChangeHandler} value={password} />
+                <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" required="true" onChange={cpasswordChangeHandler} value={cpassword} disabled={(!password)}/>
             </div>
         </div>
         
@@ -96,6 +103,7 @@ const FileUpload = props => {
             <Link to="/" class="btn">Cancel</Link>
         </div>
     </form>
+    </Fragment>
     );
 };
 
