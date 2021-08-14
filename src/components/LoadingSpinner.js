@@ -1,13 +1,26 @@
-import React from 'react';
-import './LoadingSpinner.module.css';
+import { Fragment } from 'react';
+import ReactDOM from 'react-dom';
+import classes from './LoadingSpinner.module.css';
 
 
+
+const Backdrop = (props) => {
+  return <div className={classes.backdrop}/>;
+};
+
+
+const portalElement = document.getElementById('overlays');
 const LoadingSpinner = props => {
   return (
-    <div>
-      <section><span class="loader-11"></span></section>
-    </div>
+    <Fragment>
+      {ReactDOM.createPortal(<Backdrop/>, portalElement)}
+      {ReactDOM.createPortal(
+        <div className={classes.loading}></div>,
+        portalElement
+      )}
+    </Fragment>
   );
+
 };
 
 

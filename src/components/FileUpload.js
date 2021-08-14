@@ -3,6 +3,7 @@ import './FileUpload.css'
 import { Link } from 'react-router-dom';
 import { create } from 'ipfs-http-client'
 import Card from '../components/Card'
+import LoadingSpinner from './LoadingSpinner'
 const Cryptr = require('cryptr');
 const client = create('https://ipfs.infura.io:5001/api/v0')
 const FileUpload = props => {
@@ -70,6 +71,7 @@ const FileUpload = props => {
 
     return (
         <Fragment>
+        {uploading&&<LoadingSpinner/>}
         {modal&&<Card onClose={modalChangeHandler} link={link}/>}
         <form onSubmit={formSubmission}>
         <div class="row">

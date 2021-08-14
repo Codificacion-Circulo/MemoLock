@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom'
 import classes from './View.module.css'
 import { useWeb3React } from "@web3-react/core"
 import { injected } from "../wallet/connectors"
+const Cryptr = require('cryptr');
 
 
 
@@ -19,33 +20,23 @@ const View =props => {
   const [error, setError] = useState(null);
   const params = useParams();
 
-
+  
       const fetchBlogs=useCallback(async()=>{
         setIsLoading(true);
         setError(null);
         await activate(injected)
         if(active){
           try{
-              console.log(params)
-            const response = await fetch(`https://memoir-node-app.herokuapp.com/users/${account}`, requestOptions);
+            const cryptr = new Cryptr('123');
+            const decryptedString = cryptr.decrypt(params.id);
+            console.log(decryptedString)
+            const response = await fetch(`${decryptedString}`,requestOptions);
             if (!response.ok) {
               throw new Error('Something went wrong!');
             }
             const data = await response.json();
-            console.log(data.token)
-            const Data=await fetch(`${data.token}`,requestOptions);
-            const ipfs=await Data.json()
-            setBlogs(ipfs)
-
-            // const transformedBlogs =ipfs.map((blogData) => {
-            //    return {
-            //      title: blogData.title,
-            //      author: blogData.author,
-            //      text: blogData.text,
-            //    }
-            // })
-            // setBlogs(transformedBlogs)
-            console.log(ipfs.title,ipfs.author,ipfs.text)
+            console.log(data)
+            setBlogs(data)
           }catch(error){
             setError(error.message);
           }
