@@ -12,21 +12,22 @@
 .loading {
   height: 0;
   width: 0;
-  padding: 15px;
-  border: 6px solid #ccc;
+  padding: 2rem;
+  border: 10px solid #05ffa1;
   border-right-color: #888;
-  border-radius: 22px;
-  -webkit-animation: rotate 1s infinite linear;
+  border-radius: 50px;
+  animation: rotate 1s infinite linear;
   /* left, top and position just for the demo! */
   position: absolute;
   left: 50%;
   top: 50%;
+  z-index: 30;
 }
 
-@-webkit-keyframes rotate {
-  /* 100% keyframe for  clockwise. 
-     use 0% instead for anticlockwise */
-  100% {
-    -webkit-transform: rotate(360deg);
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  } to {
+    transform: rotate(360deg);
   }
 }
