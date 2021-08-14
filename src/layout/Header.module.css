@@ -1,0 +1,71 @@
+
+
+.navbar {
+  background: rgba(0, 0, 0, 0);
+  z-index: 100;
+  padding: 0.1rem 1rem;
+  padding-bottom: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  transition: background 0.5s;
+}
+
+
+
+.navbar .logo {
+
+  display: flex;
+  align-items: center;
+  width: 70%;
+  transition: background 1s;
+}
+
+
+.navbar ul {
+
+  display: flex;
+  margin-top: 0.4rem;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 1rem;
+  text-decoration: none;
+  
+}
+.navbar ul li {
+  
+  margin: 1rem;
+  /* border: 2px solid #05ffa1; */
+  border-radius: 16px;
+  padding: 1rem;
+  padding-left: 1.23rem;
+  text-decoration: none;
+  list-style: none;
+  color: #05ffa1;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 5px;
+  
+}
+
+.navbar ul li:hover {
+  color: white;
+  background: rgba(5, 255, 159, 0.76);
+  box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75);
+  -webkit-box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75);
+  -moz-box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75);
+}
+ul .active li{  
+  color: white;
+  background: rgba(5, 255, 159, 0.76);
+  /* box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75);
+  -webkit-box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75);
+  -moz-box-shadow: -2px 4px 50px 0px rgba(5, 255, 161, 0.75); */
+}
+

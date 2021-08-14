@@ -1,0 +1,32 @@
+
+.containerss{
+    margin:5rem;
+    padding:3rem;
+    margin-top: 8rem;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.containerss i {
+    font-size: 15rem;
+    color: rgb(81, 231, 224);
+}
+
+.containerss h1{
+    margin: 4rem;
+    font-size: 4rem;
+    margin-bottom: 0rem;
+    align-items:center;
+    justify-content: center;
+    color: aliceblue;
+}
+.containerss p{
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    align-items:center;
+    justify-content: center;
+    color: white;
+}

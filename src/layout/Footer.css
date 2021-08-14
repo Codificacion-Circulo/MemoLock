@@ -1,0 +1,13 @@
+footer {
+  z-index: 1;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    color: #D1CED5;
+    text-align: center;
+    background-color: #121218;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+  }
