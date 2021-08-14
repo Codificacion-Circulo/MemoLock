@@ -1,6 +1,15 @@
 .home {
-  min-height: 35vh;
+  min-height: 85vh;
   display: flex;
+}
+.home-img img {
+  margin: 0.2rem;
+}
+.home-img1 {
+  width: 48%;
+}
+.home-img2 {
+  width: 30%;
 }
 .home .home-con {
   border-radius: 16px;
@@ -8,7 +17,7 @@
   padding-bottom: 1rem;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 8rem auto;
   margin-bottom: 0;
   color: white;
   text-align: center;
@@ -386,6 +395,7 @@
 
 .tech-heading h1 {
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .tech-para {
@@ -397,6 +407,7 @@
 
 .tech-icons {
   margin-top: 2rem;
+  text-align: center;
 }
 
 .tech-icons img {
@@ -433,7 +444,7 @@
 }
 .tech-btn button i {
   font-size: 1.5rem;
-  color: #05ffa1;
+  color: #b967ff;
 }
 
 .tech-btn button:hover {
@@ -458,8 +469,86 @@
   color: #05ffa1;
   font-weight: 700;
   font-size: 3.5rem;
-  font-family: 'Baloo Bhaina 2', cursive;
+  font-family: "Baloo Bhaina 2", cursive;
   text-align: center;
   margin-bottom: 3rem;
   margin-bottom: 1.5rem;
+}
+
+/* Media Queries  */
+@media (max-width: 1335px) {
+  .home .home-con h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1285px) {
+  .home .home-con h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 1010px) {
+  .faq-row-wrapper {
+    margin: 0;
+  }
+  .home .home-con h1 {
+    font-size: 1.7rem;
+  }
+  .home .home-con {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+  .home .home-con h2 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .faq-row-wrapper {
+    margin: 0;
+  }
+  .home .home-con h1 {
+    font-size: 1.7rem;
+  }
+  .home .home-con {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+  .home .home-con h2 {
+    font-size: 1.1rem;
+  }
+  .faq {
+    padding: 0;
+  }
+}
+
+@media (max-width: 613px) {
+  .faq {
+    padding: 0;
+  }
+  .home-img {
+    margin-top: 2rem;
+  }
+  .features {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 513px) {
+  .tech-icons img {
+    margin: 1rem 2rem;
+  }
+  .home-img {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home-img1 {
+    width: 69%;
+  }
+  .home-img2 {
+    width: 48%;
+  }
 }

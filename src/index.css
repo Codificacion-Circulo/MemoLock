@@ -5,7 +5,7 @@
   padding: 0;
 }
 *::selection {
-  background: #faec2773;
+  background: #cac8ab73;
 }
 html::-webkit-scrollbar {
   width: 0.5rem;
@@ -14,7 +14,7 @@ html::-webkit-scrollbar-track {
   background: #222;
 }
 html::-webkit-scrollbar-thumb {
-  background: #ff6100;
+  background: #7856FF;
   border-radius: 20px;
 }
 body {
