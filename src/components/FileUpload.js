@@ -3,6 +3,7 @@ import './FileUpload.css'
 import { Link } from 'react-router-dom';
 import { create } from 'ipfs-http-client'
 import Card from '../components/Card'
+const Cryptr = require('cryptr');
 const client = create('https://ipfs.infura.io:5001/api/v0')
 const FileUpload = props => {
     const [name,setName]= useState('');
@@ -27,17 +28,19 @@ const FileUpload = props => {
             return;
         }
         setUploading(true);
+        const cryptr = new Cryptr(cpassword);
         try {
             const added = await client.add(file);
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
-            setLink(url)
             console.log(url)
+            const encryptedString = cryptr.encrypt(url);
+            setLink(encryptedString)
             setMessage('File Uploaded');
           } catch (error) {
             console.log('Error uploading file: ', error)
             setMessage(error);
           }  
-       
+          setTimeout(() => setMessage(''), 10000);
             setName('');
             setCPassword('');
             setPassword('');
@@ -103,6 +106,7 @@ const FileUpload = props => {
             <Link to="/" class="btn">Cancel</Link>
         </div>
     </form>
+    <p>{message}</p>
     </Fragment>
     );
 };

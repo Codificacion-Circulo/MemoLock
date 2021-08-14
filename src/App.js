@@ -5,6 +5,8 @@ import LoadingSpinner from './components/LoadingSpinner'
 import Error from './pages/Error'
 import Create from './pages/Create'
 import Home from './pages/Home'
+import View from './pages/View'
+
 
 
 
@@ -41,8 +43,8 @@ function App() {
           <Route path='/create'>
             <Create />
           </Route>
-          <Route path='/view'>
-            <LoadingSpinner/>
+          <Route path='/view/:id'>
+            <View/>
           </Route>
 
           <Route path='*'>
