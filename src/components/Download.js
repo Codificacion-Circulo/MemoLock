@@ -72,7 +72,7 @@ const FileUpload = (props) => {
       </div>
         <form onSubmit={formSubmission} className="form-up">
           <div className="row">
-            <h2 className="details">Details</h2>
+            <h2 className="details">File ID</h2>
             <div className="input_field authtitle">
               <input
                 type="text"

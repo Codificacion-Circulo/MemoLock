@@ -5,15 +5,11 @@ import Web3 from 'web3'
 import { lock_addr,lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
 import remove from '../images/remove.png';
-const Cryptr = require("cryptr");
 
 
 
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-const FileUpload = (props) => {
+
+const Remove = (props) => {
     const [name,setName]=useState(props.id)
     const [password,setPassword]=useState('')
     const [uploading, setUploading] = useState(false);
@@ -23,6 +19,7 @@ const FileUpload = (props) => {
     const loadBlockhainData=async()=>{
       const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
       const accounts=await web3.eth.getAccounts()
+      setAccount(accounts[0])
       const lock=new web3.eth.Contract(lock_abi,lock_addr)
       setLockk(lock)
       
@@ -111,4 +108,4 @@ const FileUpload = (props) => {
   );
 };
 
-export default FileUpload;
+export default Remove;
