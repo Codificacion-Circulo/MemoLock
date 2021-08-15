@@ -17,6 +17,5 @@ const Card = (props) => {
     </Modal>
   );
 };
-
 export default Card;
 
