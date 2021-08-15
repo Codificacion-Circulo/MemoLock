@@ -1,5 +1,4 @@
 import {Fragment} from 'react';
-import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css'
 import favicon from '../images/favicon.png'
 import MobileNavigation from './MobileNavigation';

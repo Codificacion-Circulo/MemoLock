@@ -6,7 +6,7 @@ const Card = (props) => {
     <Modal onClose={props.onClose}>
        <h4 className={classes.Head}>WARNING!<span className={classes.Headspan}>-This is a Secure Link Password Protected</span> </h4>
       <div className={classes.total}>
-        <span>{props.link}</span>
+        <span>{`http://localhost:3000/view/${props.link}`}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClose}>

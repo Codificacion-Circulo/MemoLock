@@ -11,19 +11,19 @@ import View from './pages/View'
 
 
 
-import { Web3ReactProvider } from '@web3-react/core'
-import Web3 from 'web3'
+// import { Web3ReactProvider } from '@web3-react/core'
+// import Web3 from 'web3'
 
 
-function getLibrary(provider) {
-  return new Web3(provider)
-}
+// function getLibrary(provider) {
+//   return new Web3(provider)
+// }
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Web3ReactProvider getLibrary={getLibrary}>
+    
     <Layout>
     <Suspense
       fallback={
@@ -54,7 +54,6 @@ function App() {
 
     </Suspense>
   </Layout>
-  </Web3ReactProvider>
   </BrowserRouter>
   );
 }
