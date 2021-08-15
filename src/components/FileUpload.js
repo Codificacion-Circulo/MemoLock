@@ -77,7 +77,7 @@ const FileUpload = (props) => {
       {uploading && <LoadingSpinner />}
       {modal && <Card onClose={modalChangeHandler} link={link} />}
       <div className="updown">
-        <div className="img-con">
+        <div className="img-con-up">
           <img src={upload} alt="upload" className="up-img" />
           <div class="row">
             <div class="input_field">
