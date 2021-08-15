@@ -1,8 +1,8 @@
-import {Fragment,useState,useEffect} from "react";
-import {Link} from 'react-router-dom'
+import { Fragment, useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import "./FileUpload.css";
 import Web3 from 'web3'
-import { lock_addr,lock_abi } from "../wallet/config";
+import { lock_addr, lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
 import remove from '../images/remove.png';
 
@@ -10,55 +10,58 @@ import remove from '../images/remove.png';
 
 
 const Remove = (props) => {
-    const [name,setName]=useState(props.id)
-    const [password,setPassword]=useState('')
-    const [uploading, setUploading] = useState(false);
-    const [error, setError] = useState(null);
-    const [account, setAccount] = useState('');
-    const [lockk,setLockk] = useState({})
-    const loadBlockhainData=async()=>{
-      const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
-      const accounts=await web3.eth.getAccounts()
-      setAccount(accounts[0])
-      const lock=new web3.eth.Contract(lock_abi,lock_addr)
-      setLockk(lock)
-      
-    };
-    useEffect(() => {
-      loadBlockhainData();
-    },[account])
-    
-        const formSubmission=async(e)=>{
-          e.preventDefault();
-          setUploading(true);
+  const [name, setName] = useState(props.id)
+  const [password, setPassword] = useState('')
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(null);
+  const [account, setAccount] = useState('');
+  const [lockk, setLockk] = useState({})
+  const loadBlockhainData = async () => {
+    const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
+    const accounts = await web3.eth.getAccounts()
+    setAccount(accounts[0])
+    console.log(account)
+    const lock = new web3.eth.Contract(lock_abi, lock_addr)
+    setLockk(lock)
+    console.log(lockk)
+  };
+  useEffect(() => {
+    loadBlockhainData();
+  }, [account])
 
-          if(!name||!password){return}
-            try{
-                console.log('started')
-              const recipt=await lockk.methods.removegrant(name,password).send({from: account})
-              console.log(recipt)
-            //   if (!response.ok) {
-            //     throw new Error('Something went wrong!');
-            //   }
-            }catch(error){
-              setError(error);
-            }
-            setUploading(false)
-        };
+  const formSubmission = async (e) => {
+    e.preventDefault();
+    if (!password || !name) {
+      console.log("Please Fill the correct Details");
+      return;
+    }
+    setUploading(true);
 
-      const nameChangeHandler = (event) => {
-        setName(event.target.value);
-      };
-    
-      const passwordChangeHandler = (event) => {
-        setPassword(event.target.value);
-      };
+
+    try {
+      console.log('started')
+      const recipt = await lockk.methods.removegrant(name,password).send({ from: account })
+      console.log(recipt)
+    } catch (err) {
+      setError(err);
+      console.log(error)
+    }
+    setUploading(false)
+  };
+
+  const nameChangeHandler = (event) => {
+    setName(event.target.value);
+  };
+
+  const passwordChangeHandler = (event) => {
+    setPassword(event.target.value);
+  };
 
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
       <div className="updown">
-      <div className="img-con-down">
+        <div className="img-con-down">
           <img src={remove} alt="upload" className="down-img" />
         </div>
         <form onSubmit={formSubmission} className="form-up">

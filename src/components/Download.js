@@ -24,6 +24,7 @@ const FileUpload = (props) => {
     const loadBlockhainData=async()=>{
       const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
       const accounts=await web3.eth.getAccounts()
+      setAccount(accounts[0])
       const lock=new web3.eth.Contract(lock_abi,lock_addr)
       setLockk(lock)
       

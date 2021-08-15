@@ -43,7 +43,7 @@ const FileUpload = (props) => {
 
   const formSubmission = async (e) => {
     e.preventDefault();
-    if (!password === cpassword && name && file) {
+    if (!password === cpassword || !name || !file) {
       console.log("Please Fill the correct Details");
       return;
     }
@@ -59,9 +59,11 @@ const FileUpload = (props) => {
       const url = `https://ipfs.infura.io/ipfs/${added.cid.toString()}/${filename}`;
       console.log(url);
       const encryptedString = cryptr.encrypt(url);
+      console.log(name)
       const recipt=await lockk.methods.fileURI(encryptedString,name).send({from:account})
       console.log(recipt);
       const tokenId=await lockk.methods.tokenCounter().call()
+      console.log(tokenId);
       setCount(tokenId);
       setMessage("File Uploaded");
     } catch (error) {
