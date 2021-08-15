@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { create } from 'ipfs-http-client'
 import Card from '../components/Card'
 import LoadingSpinner from './LoadingSpinner'
+import submit from '../images/create.png';
 const Cryptr = require('cryptr');
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
@@ -101,6 +102,7 @@ const FileUpload = props => {
                 <h1>Upload Files</h1>
             </div>
             <div className='custom-file'>
+            <img src={submit} alt="create" />
                 <input
                     type='file'
                     className='custom-file-input'

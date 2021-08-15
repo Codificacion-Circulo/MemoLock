@@ -2,6 +2,8 @@ import {Fragment} from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css'
 import favicon from '../images/favicon.png'
+import MobileNavigation from './MobileNavigation';
+import Navigation from './Navigation';
 
 
 const Header = props => {
@@ -13,24 +15,9 @@ const Header = props => {
             <div id="logo" className={classes.logo}>
                <img src={favicon} style={{width: '90px', height: '80px'}} alt="logo"/>
             </div>
-            
-            <ul>
-            <NavLink to='/home' activeClassName={classes.active} style={{ textDecoration: 'none'}}>
-              <li>HOME</li>
-            </NavLink>
+            <MobileNavigation />
+            <Navigation />
 
-            <NavLink to='/create' activeClassName={classes.active} style={{ textDecoration: 'none' }}>
-              <li>WRITE</li>
-            </NavLink>
-
-            <NavLink to='/view' activeClassName={classes.active} style={{ textDecoration: 'none' }}>
-              <li>VIEW</li>
-            </NavLink>
-
-            <NavLink to='/*' activeClassName={classes.active} style={{ textDecoration: 'none' }}>
-              <li>ABOUT</li>
-            </NavLink>
-            </ul>
         </div>
     </header>
     </Fragment>

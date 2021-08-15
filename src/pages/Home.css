@@ -502,7 +502,23 @@
   .home .home-con h2 {
     font-size: 1.1rem;
   }
+  .home {
+    min-height: 55vh;
+  }
+  .home-img1 {
+    width: 55%;
+  }
+  .home-img2 {
+    width: 35%;
+  }
+  .home-img {
+    margin-top: 2rem;
+  }
+  .features {
+    margin-top: 1rem;
+  }
 }
+
 
 @media (max-width: 700px) {
   .faq-row-wrapper {
@@ -520,6 +536,21 @@
   }
   .faq {
     padding: 0;
+  }
+  .home {
+    min-height: 55vh;
+  }
+  .home-img1 {
+    width: 55%;
+  }
+  .home-img2 {
+    width: 35%;
+  }
+  .home-img {
+    margin-top: 2rem;
+  }
+  .features {
+    margin-top: 1rem;
   }
 }
 

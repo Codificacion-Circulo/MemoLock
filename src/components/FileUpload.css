@@ -1,155 +1,173 @@
 .input_field {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.input_field label{
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  margin: 0.5rem 0.2rem;
+  font-weight: bold;
+}
+
+.input_field input {
+  outline:none;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  background: none;
+}
+
+.input_field select {
+  outline: none;
+  border: 2px solid black;
+  color: white;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0 0.4rem;
+  margin-bottom: 0.5rem;
+  background: none;
+  width: 48.5%;
+  font-size: 1rem;
+}
+
+.input_field select option {
+  background: black;
+  border-radius: 16px;
+  outline: none;
+}
+
+.input_field h1{
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  margin: 1rem 0.2rem;
+  font-weight: bold;
+}
+
+.details {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  margin: 0.5rem 0.2rem;
+}
+
+.authtitle {
+  display: flex;
+  flex-direction: row;
+}
+
+.authtitle input {
+  width: 50%;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.authtitle input::placeholder {
+  color: #ffffff;
+}
+
+.authtitle input:first-child {
+  margin-right: 2rem;
+}
+
+.btn{
+  cursor: pointer; /* "hand" cursor */
+  margin-top:1rem;
+  margin-right: 1rem;
+  background-color: #05ffa1;
+  border: 2px solid #05ffa1;
+  border-radius:4px;
+  color: black;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.btn:hover{
+  background-color: #282828;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(81, 186, 235, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   
-  .input_field label{
-    font-size: 1.5rem;
-    font-family: 'Poppins', sans-serif;
-    margin: 0.5rem 0.2rem;
-    font-weight: bold;
-  }
+}
+
+
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  .input_field input {
-    outline:none;
-    border: 2px solid black;
-    border-radius: 0.5rem;
-    height: 1.5rem;
-    padding: 0 0.4rem;
-    color: white;
-    margin-bottom: 0.5rem;
-    background: none;
-  }
-  
-  .input_field select {
-    outline: none;
-    border: 2px solid black;
-    color: white;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    padding: 0 0.4rem;
-    margin-bottom: 0.5rem;
-    background: none;
-    width: 48.5%;
-    font-size: 1rem;
-  }
-  
-  .input_field select option {
-    background: black;
-    border-radius: 16px;
-    outline: none;
-  }
-  
-  .input_field h1{
-    font-size: 1.5rem;
-    font-family: 'Poppins', sans-serif;
-    margin: 1rem 0.2rem;
-    font-weight: bold;
-  }
-  
-  .details {
-    font-size: 1.5rem;
-    font-family: 'Poppins', sans-serif;
-    margin: 0.5rem 0.2rem;
-  }
-  
-  .authtitle {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .authtitle input {
-    width: 50%;
-    height: 2rem;
-    font-size: 1rem;
-  }
-  
-  .authtitle input::placeholder {
-    color: #ffffff;
-  }
-  
-  .authtitle input:first-child {
-    margin-right: 2rem;
-  }
-  
-  .btn{
-    cursor: pointer; /* "hand" cursor */
-    margin-top:1rem;
-    margin-right: 1rem;
-    background-color: #05ffa1;
-    border: 2px solid #05ffa1;
-    border-radius:4px;
-    color: black;
-    padding: 15px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-  }
-  
-  .btn:hover{
-    background-color: #282828;
-    color: white;
-    box-shadow: 0 12px 16px 0 rgba(81, 186, 235, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    
-  }
-  
-  
-  .heading{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-  }
-  
-  .heading h1 {
-    font-size: 2.2rem;
-    color: #51E7E0;
-    font-weight: 700;
-    font-size: 3rem;
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-    margin-bottom: 2.2rem;
-  }
-  
+}
+
+.heading h1 {
+  font-size: 2.2rem;
+  color: #51E7E0;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.custom-file {
+  border: 2px solid black;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.custom-file label {
+  width: 30%;
+}
+
+.custom-file img {
+  width: 30%;
+  margin: 2rem;
+}
+
 .custom-file-input{
-    width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+height: 0.1px;
+opacity: 0;
+overflow: hidden;
+position: absolute;
+z-index: -1;
 }
 .custom-file-input + label {
-    cursor: pointer; /* "hand" cursor */
-    margin-top:1rem;
-    margin-right: 1rem;
-    background-color: #05ffa1;
-    border: 2px solid #05ffa1;
-    border-radius:4px;
-    color: black;
-    padding: 15px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    display: inline-block;
+  cursor: pointer; /* "hand" cursor */
+  /* margin-top:1rem; */
+  /* margin-right: 1rem; */
+  background-color: #05ffa1;
+  border: 2px solid #05ffa1;
+  border-radius:4px;
+  color: black;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  display: inline-block;
 }
 
 .custom-file-input:focus + label,
 .custom-file-input + label:hover {
-    background-color: #282828;
-    color: white;
-    box-shadow: 0 12px 16px 0 rgba(81, 186, 235, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #282828;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(81, 186, 235, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .custom-file-input:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+outline: 1px dotted #000;
+outline: -webkit-focus-ring-color auto 5px;
 }
