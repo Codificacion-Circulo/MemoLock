@@ -5,11 +5,13 @@ import ipfs from "../images/ipfs.png";
 import Faqs from "../components/Faqs";
 import file1 from "../images/file1.png";
 import file2 from "../images/file2.png";
+
 import "./Home.css";
 
 const Home = () => {
   return (
     <Fragment>
+
       <section id="home" className="home">
         <div className="home-con">
           <h1>

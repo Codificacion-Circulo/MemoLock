@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect,useCallback } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import "./FileUpload.css";
 import Web3 from 'web3'
