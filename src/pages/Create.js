@@ -6,7 +6,7 @@ const Create = props => {
 
 
     return (
-        <div class="write__container">
+        <div className="write__container">
            <FileUpload />
         </div>
     );

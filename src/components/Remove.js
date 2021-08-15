@@ -83,7 +83,7 @@ const Remove = (props) => {
                 type="text"
                 id="password"
                 name="password"
-                placeholder="Address"
+                placeholder="Address to Revoke"
                 required={true}
                 onChange={passwordChangeHandler}
                 value={password}
