@@ -10,6 +10,13 @@
     color: #05ffa1;
   }
   
+  @media (max-width: 550px) {
+    .write__container {
+      margin: 0 0rem;
+      margin-top: 10rem;
+    }
+  } 
+
   @media (max-width: 445px) {
     .write__container {
       margin: 0 0;

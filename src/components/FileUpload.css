@@ -175,7 +175,7 @@
   grid-template-columns: 1.2fr 1fr;
 }
 
-.img-con {
+.img-con-up, .img-con-down {
   border: 2px solid black;
   padding: 3rem;
   border-radius: 25px;
@@ -229,14 +229,15 @@
   .form-up {
     padding-left: 0rem;
   }
-  .img-con {
+  .img-con-up, .img-con-down  {
     padding: 3rem 0rem;
     padding-bottom: 0rem;
+    padding-right: 2rem;
   }
 }
 
 @media (max-width: 900px) {
-  .img-con {
+  .img-con-down {
     display: none;
   }
   .authtitle input {

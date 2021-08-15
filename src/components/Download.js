@@ -119,20 +119,11 @@ const FileUpload = (props) => {
             </Link>
           </div>
         </form>
-        <div className="img-con">
+        <div className="img-con-down">
           <img src={download} alt="upload" className="down-img" />
           <div class="row">
             <div class="input_field">
               {/* <h1>Upload Files</h1> */}
-            </div>
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="customFile"
-                onChange={onChange}
-              />
-              {/* <label for="customFile">{filename}</label> */}
             </div>
           </div>
         </div>
