@@ -1,13 +1,11 @@
-import {Fragment,useState,useEffect,useCallback, useEffec } from "react";
-import {Link,useParams} from 'react-router-dom'
+import {Fragment,useState,useEffect} from "react";
+import {Link} from 'react-router-dom'
 import "./FileUpload.css";
-import { create } from "ipfs-http-client";
 import Web3 from 'web3'
 import { lock_addr,lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
 import download from "../images/download.png";
 const Cryptr = require("cryptr");
-const client = create("https://ipfs.infura.io:5001/api/v0");
 
 
 
@@ -26,8 +24,6 @@ const FileUpload = (props) => {
     const loadBlockhainData=async()=>{
       const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
       const accounts=await web3.eth.getAccounts()
-      setAccount(accounts[0])
-      console.log(account)
       const lock=new web3.eth.Contract(lock_abi,lock_addr)
       setLockk(lock)
       
@@ -43,17 +39,13 @@ const FileUpload = (props) => {
           if(!name||!password){return}
             try{
               const cryptr = new Cryptr(password);
-              console.log('started')
               const link=await lockk.methods.getlink(name-1).call()
-              console.log(link)
               const decryptedString = cryptr.decrypt(link);
-              console.log(decryptedString)
               const response = await fetch(`${decryptedString}`,requestOptions);
               if (!response.ok) {
                 throw new Error('Something went wrong!');
               }
               const data = await response.url;
-              console.log(data)
               openLink(data)
             }catch(error){
               setError(error);
@@ -76,43 +68,43 @@ const FileUpload = (props) => {
       {uploading && <LoadingSpinner />}
       <div className="updown">
         <form onSubmit={formSubmission} className="form-down">
-          <div class="row">
-            <h2 class="details">Details</h2>
-            <div class="input_field authtitle">
+          <div className="row">
+            <h2 className="details">Details</h2>
+            <div className="input_field authtitle">
               <input
                 type="text"
                 id="fname"
                 name="fname"
                 placeholder="File ID"
-                required="true"
+                required={true}
                 onChange={nameChangeHandler}
                 value={name}
               />
             </div>
           </div>
-          <div class="row">
-            <h2 class="details">Password</h2>
-            <div class="input_field">
+          <div className="row">
+            <h2 className="details">Password</h2>
+            <div className="input_field">
               <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Password"
-                required="true"
+                required={true}
                 onChange={passwordChangeHandler}
                 value={password}
               />
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <input
               type="submit"
               value="Download"
-              class="btn"
+              className="btn"
               disabled={!password && !name}
             ></input>
-            <Link to="/" class="btn">
+            <Link to="/" className="btn">
               Cancel
             </Link>
           </div>

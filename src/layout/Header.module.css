@@ -1,7 +1,5 @@
-
-
 .navbar {
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.274);
   z-index: 100;
   padding: 0.1rem 1rem;
   padding-bottom: 0.1rem;
@@ -16,7 +14,6 @@
 
 
 .navbar .logo {
-
   display: flex;
   align-items: center;
   width: 70%;
@@ -96,34 +93,36 @@ ul .active li{
     display: flex;
     flex-direction: column;
     position: absolute;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     top: 80px;
     right: 0%;
-    width: 22%;
+    width: 35%;
     background-color: #101010;
-    border-top: 2px solid #B967FF;
+    border-radius:1rem;
   }
 }
 
 @media (max-width: 580px) {
   .navbar ul {
-    width: 25%;
+    width: 40%;
   }
 }
 
 @media (max-width: 451px) {
   .navbar ul {
-    width: 29%;
+    width: 50%;
   }
 }
 
 @media (max-width: 400px) {
   .navbar ul {
-    width: 32%;
+    width: 55%;
   }
 }
 
 @media (max-width: 375px) {
   .navbar ul {
-    width: 35%;
+    width: 60%;
   }
 }

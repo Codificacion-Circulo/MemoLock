@@ -66,7 +66,6 @@ const FileUpload = (props) => {
       setMessage("File Uploaded");
     } catch (error) {
       console.log("Error uploading file: ", error);
-      setMessage(error);
     }
     setTimeout(() => setMessage(""), 10000);
     setName("");
