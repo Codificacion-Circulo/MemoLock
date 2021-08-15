@@ -18,7 +18,7 @@ const FileUpload = (props) => {
   const [cpassword, setCPassword] = useState("");
   const [message, setMessage] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const [account, setAccount] = useState('');
   const [lockk,setLockk] = useState({})
   const [count,setCount] = useState(0)
@@ -98,7 +98,7 @@ const FileUpload = (props) => {
       {uploading && <LoadingSpinner />}
       {modal && <Card onClose={modalChangeHandler} link={count} />}
       <div className="updown">
-        <div className="img-con">
+        <div className="img-con-up">
           <img src={upload} alt="upload" className="up-img" />
           <div className="row">
             <div className="input_field">

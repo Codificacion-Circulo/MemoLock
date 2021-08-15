@@ -117,7 +117,7 @@ const FileUpload = (props) => {
             </Link>
           </div>
         </form>
-        <div className="img-con">
+        <div className="img-con-down">
           <img src={download} alt="upload" className="down-img" />
         </div>
       </div>

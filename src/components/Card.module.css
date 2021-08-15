@@ -24,27 +24,22 @@
   
   .actions button:hover,
   .actions button:active {
-    color: white;
-  }
-  
-  .actions .button--alt {
-
-  }
-  
-  .actions .button {
-
-    color: white;
+    color: #ff0000;
   }
 
   .Head{
-    color: red;
+    color: #ffff00;
     font-size: 1.5rem;
     font-weight: bold;
 
   }
 
   .Headspan{
-    color: black;
+    color: white;
     font-size: 1rem;
     font-weight: 300;
+  }
+
+  span, a {
+    color: white;
   }
