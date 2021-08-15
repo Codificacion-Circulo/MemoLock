@@ -24,7 +24,7 @@ const Create = props => {
 
     return (
         <div class="write__container">
-           <FileUpload />
+           <Download />
         </div>
     );
 };

@@ -30,3 +30,9 @@
     justify-content: center;
     color: white;
 }
+
+@media (max-width: 484px) {
+    .containerss {
+        margin:5rem 0rem;
+    }
+}

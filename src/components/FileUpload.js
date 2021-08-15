@@ -76,73 +76,77 @@ const FileUpload = (props) => {
     <Fragment>
       {uploading && <LoadingSpinner />}
       {modal && <Card onClose={modalChangeHandler} link={link} />}
-      <form onSubmit={formSubmission}>
-        <div class="row">
-          <h2 class="details">Details</h2>
-          <div class="input_field authtitle">
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              placeholder="File Name"
-              required="true"
-              onChange={nameChangeHandler}
-              value={name}
-            />
+      <div className="updown">
+        <div className="img-con">
+          <img src={upload} alt="upload" className="up-img" />
+          <div class="row">
+            <div class="input_field">
+              {/* <h1>Upload Files</h1> */}
+            </div>
+            <div className="custom-file">
+              <input
+                type="file"
+                className="custom-file-input"
+                id="customFile"
+                onChange={onChange}
+              />
+              <label for="customFile">{filename}</label>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <h2 class="details">Password</h2>
-          <div class="input_field authtitle">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              required="true"
-              onChange={passwordChangeHandler}
-              value={password}
-            />
-            <input
-              type="password"
-              id="cpassword"
-              name="cpassword"
-              placeholder="Confirm Password"
-              required="true"
-              onChange={cpasswordChangeHandler}
-              value={cpassword}
-              disabled={!password}
-            />
+        <form onSubmit={formSubmission} className="form-up">
+          <div class="row">
+            <h2 class="details">Details</h2>
+            <div class="input_field authtitle">
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                placeholder="File Name"
+                required="true"
+                onChange={nameChangeHandler}
+                value={name}
+              />
+            </div>
           </div>
-        </div>
+          <div class="row">
+            <h2 class="details">Password</h2>
+            <div class="input_field">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required="true"
+                onChange={passwordChangeHandler}
+                value={password}
+              />
+              <input
+                type="password"
+                id="cpassword"
+                name="cpassword"
+                placeholder="Confirm Password"
+                required="true"
+                onChange={cpasswordChangeHandler}
+                value={cpassword}
+                disabled={!password}
+              />
+            </div>
+          </div>
 
-        <div class="row">
-          <div class="input_field">
-            <h1>Upload Files</h1>
-          </div>
-          <div className="custom-file">
-            <img src={upload} alt="upload" />
+          <div class="row">
             <input
-              type="file"
-              className="custom-file-input"
-              id="customFile"
-              onChange={onChange}
-            />
-            <label for="customFile">{filename}</label>
+              type="submit"
+              value="Submit"
+              class="btn"
+              disabled={!password === cpassword && name}
+            ></input>
+            <Link to="/" class="btn">
+              Cancel
+            </Link>
           </div>
-        </div>
-        <div class="row">
-          <input
-            type="submit"
-            value="Submit"
-            class="btn"
-            disabled={!password === cpassword && name}
-          ></input>
-          <Link to="/" class="btn">
-            Cancel
-          </Link>
-        </div>
-      </form>
+        </form>
+      </div>
       <p>{message}</p>
     </Fragment>
   );

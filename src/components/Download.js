@@ -8,7 +8,7 @@ import download from "../images/download.png";
 const Cryptr = require("cryptr");
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
-const Download = (props) => {
+const FileUpload = (props) => {
   const [name, setName] = useState("");
   const [filename, setFilename] = useState("Choose a File");
   const [file, setFile] = useState("");
@@ -60,8 +60,13 @@ const Download = (props) => {
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
+
   const passwordChangeHandler = (event) => {
     setPassword(event.target.value);
+  };
+
+  const cpasswordChangeHandler = (event) => {
+    setCPassword(event.target.value);
   };
   const modalChangeHandler = () => {
     setModal(false);
@@ -71,66 +76,70 @@ const Download = (props) => {
     <Fragment>
       {uploading && <LoadingSpinner />}
       {modal && <Card onClose={modalChangeHandler} link={link} />}
-      <form onSubmit={formSubmission}>
-        <div class="row">
-          <h2 class="details">Link</h2>
-          <div class="input_field authtitle">
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              placeholder="File Name"
-              required="true"
-              onChange={nameChangeHandler}
-              value={name}
-            />
-          </div>
-        </div>
-        <div class="row">
-          <h2 class="details">Password</h2>
-          <div class="input_field authtitle">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              required="true"
-              onChange={passwordChangeHandler}
-              value={password}
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="input_field">
-            <h1>Download Files</h1>
-          </div>
-          <div className="custom-file">
-            <img src={download} alt="download" />
-            <input
-              type="file"
-              className="custom-file-input"
-              id="customFile"
-              onChange={onChange}
-            />
-            {/* <label for="customFile">{filename}</label> */}
-            <div class="row">
+      <div className="updown">
+        <form onSubmit={formSubmission} className="form-down">
+          <div class="row">
+            <h2 class="details">Details</h2>
+            <div class="input_field authtitle">
               <input
-                type="submit"
-                value="Download"
-                class="btn"
-                disabled={!password === cpassword && name}
-              ></input>
-              <Link to="/" class="btn">
-                Cancel
-              </Link>
+                type="text"
+                id="fname"
+                name="fname"
+                placeholder="File Name"
+                required="true"
+                onChange={nameChangeHandler}
+                value={name}
+              />
+            </div>
+          </div>
+          <div class="row">
+            <h2 class="details">Password</h2>
+            <div class="input_field">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required="true"
+                onChange={passwordChangeHandler}
+                value={password}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <input
+              type="submit"
+              value="Download"
+              class="btn"
+              disabled={!password === cpassword && name}
+            ></input>
+            <Link to="/" class="btn">
+              Cancel
+            </Link>
+          </div>
+        </form>
+        <div className="img-con">
+          <img src={download} alt="upload" className="down-img" />
+          <div class="row">
+            <div class="input_field">
+              {/* <h1>Upload Files</h1> */}
+            </div>
+            <div className="custom-file">
+              <input
+                type="file"
+                className="custom-file-input"
+                id="customFile"
+                onChange={onChange}
+              />
+              {/* <label for="customFile">{filename}</label> */}
             </div>
           </div>
         </div>
-      </form>
+      </div>
       <p>{message}</p>
     </Fragment>
   );
 };
 
-export default Download;
+export default FileUpload;
