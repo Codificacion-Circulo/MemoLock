@@ -3,10 +3,8 @@ import { useWeb3React } from "@web3-react/core"
 import { injected } from "../wallet/connectors"
 import './Create.css'
 import FileUpload from '../components/FileUpload'
-
-
-
-
+import Download from '../components/Download';
+import File from 'mock-fs/lib/file';
 
 const Create = props => {
 
@@ -26,7 +24,7 @@ const Create = props => {
 
     return (
         <div class="write__container">
-           <FileUpload></FileUpload>
+           <Download />
         </div>
     );
 };

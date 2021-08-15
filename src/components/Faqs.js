@@ -5,30 +5,32 @@ import './Faqs.css'
 const data = {
     rows: [
         {
-            title: "What is NFT ?",
-            content: `NFT are non fungible token It is documentation of ownership of one of a kind digital asset. 
-            Usually it is referred as digital art and can represent anything from pictures to a piece of virtual land.  A NFT is code stored on blockchain  that points to the exact location the data is stored. `,
+            title: "Are my files secure with CryptoLock?",
+            content: `They are completely secure as only the owner of the file can grant access or remove access to a file that is already encrypted. All files get stored on IPFS after getting encrypted. So you can be assured that your files are always secured.`,
         },
         {
-            title: "Where is the data stored ?",
-            content:
-                "The data is stored in IPFS which is like a decentralized cloud based system. more about ipfs here.",
+            title: "What is IPFS?",
+            content:`The data is stored in IPFS which is like a decentralized cloud based system. more about ipfs here.`,
         },
         {
-            title: "Why is fees requiered to convert my blog to nft ?",
-            content: `For stroing the nft on blockchain a nft needs to be minted and thus minitng fees and gas fees is required to be payed for creating a NFT`,
+            title: "How is my file encrypted?",
+            content: `Once you upload the file you are required to provide a key(password) to the file which you will also give out to the receiver thus adding another security layer. The standard used to encrypt the file is aes-256-gcm.`,
         },
         {
-            title: "Where will my blog go once I mint it ?",
-            content: `Your blog will go to your wallet in form of NFT which you can sell on OpenSea of keep it as a Memoir `,
+            title: "How do I share my file with someone?",
+            content: `All you need is a MetaMask connected wallet with some ethers for gas fees which ensure not even us can see your data and also the address of the person who wants to see the file.`,
         },
         {
-            title: "How do i mint a nft ?",
-            content: `You just click on mint NFT and let your metamask wallet get connected and it will automatically tell you to confirm the payment.`,
+            title: "Can I revoke access once I have given them access to a person?",
+            content: `Yes, we provide the feature to revoke access from a file if you no longer want to share it.`,
         },
         {
-            title: "What do you mean by I am the owner of data ?",
-            content: `We at memoir is in no control of your data as we dont store it on our own server and thus you get full copyright of your data and if someone tries to copy your data you could give a proof this data is yours with IPFS hash.`,
+            title: "Why should I use CryptoLock rather than traditional cloud storage?",
+            content: `All the traditional cloud storage are centralized and keep all the data on their server which are prone to hacks and thus making it unreliable, while our idea is completely decentralized and also hack-proof through 3 levels of the system (Blockchain, IPFS, added encryption) thus making it impossible to hack.`,
+        },
+        {
+            title: "What is the file size limit?",
+            content: ` The maximum size of the file is 100MB at the moment due to API limitations.`,
         }
     ]
 };
