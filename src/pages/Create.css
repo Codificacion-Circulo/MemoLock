@@ -1,11 +1,12 @@
 .write__container{
-    margin: 0 17rem;
-    margin-top:5rem;
-    max-width: 70%;
-    /* background: #000000a1; */
-    padding: 1.5rem;
-    padding-bottom: 0.85rem;
-    border-radius: 16px;
-    color: #05ffa1;
-    min-height: 43rem;
-  }
+  margin: 0 17rem;
+  margin-top:5rem;
+  max-width: 70%;
+  /* background: #000000a1; */
+  padding: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-radius: 16px;
+  color: #05ffa1;
+  min-height: 43rem;
+}
+
