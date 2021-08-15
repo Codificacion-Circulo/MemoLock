@@ -1,10 +1,12 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState,useEffect } from "react";
 import "./FileUpload.css";
 import { Link } from "react-router-dom";
 import { create } from "ipfs-http-client";
 import Card from "../components/Card";
 import LoadingSpinner from "./LoadingSpinner";
 import upload from "../images/upload.png";
+import Web3 from 'web3'
+import { lock_addr,lock_abi } from "../wallet/config";
 const Cryptr = require("cryptr");
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
@@ -14,10 +16,25 @@ const FileUpload = (props) => {
   const [file, setFile] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [link, setLink] = useState("");
   const [message, setMessage] = useState("");
   const [uploading, setUploading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [account, setAccount] = useState('');
+  const [lockk,setLockk] = useState({})
+  const [count,setCount] = useState(0)
+
+
+  const loadBlockhainData=async()=>{
+    const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
+    const accounts=await web3.eth.getAccounts()
+    setAccount(accounts[0])
+    const lock=new web3.eth.Contract(lock_abi,lock_addr)
+    setLockk(lock)
+    
+  };
+  useEffect(() => {
+    loadBlockhainData();
+  }, [account])
 
   const onChange = (e) => {
     setFile(e.target.files[0]);
@@ -30,6 +47,7 @@ const FileUpload = (props) => {
       console.log("not met");
       return;
     }
+    
     setUploading(true);
     const cryptr = new Cryptr(cpassword);
     try {
@@ -41,7 +59,10 @@ const FileUpload = (props) => {
       const url = `https://ipfs.infura.io/ipfs/${added.cid.toString()}/${filename}`;
       console.log(url);
       const encryptedString = cryptr.encrypt(url);
-      setLink(encryptedString);
+      const recipt=await lockk.methods.fileURI(encryptedString,name).send({from:account})
+      console.log(recipt);
+      const tokenId=await lockk.methods.tokenCounter().call()
+      setCount(tokenId);
       setMessage("File Uploaded");
     } catch (error) {
       console.log("Error uploading file: ", error);
@@ -75,7 +96,7 @@ const FileUpload = (props) => {
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
-      {modal && <Card onClose={modalChangeHandler} link={link} />}
+      {modal && <Card onClose={modalChangeHandler} link={count} />}
       <div className="updown">
         <div className="img-con">
           <img src={upload} alt="upload" className="up-img" />
@@ -96,13 +117,13 @@ const FileUpload = (props) => {
         </div>
         <form onSubmit={formSubmission} className="form-up">
           <div class="row">
-            <h2 class="details">Details</h2>
+            <h2 class="details">Reciver Details</h2>
             <div class="input_field authtitle">
               <input
                 type="text"
                 id="fname"
                 name="fname"
-                placeholder="File Name"
+                placeholder="Reciver's Account ID"
                 required="true"
                 onChange={nameChangeHandler}
                 value={name}

@@ -2,8 +2,8 @@ import {Fragment,useState,useCallback, useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom'
 import LoadingSpinner from '../components/LoadingSpinner'
 import classes from './View.module.css'
-import { useWeb3React } from "@web3-react/core"
-import { injected } from "../wallet/connectors"
+// import { useWeb3React } from "@web3-react/core"
+// import { injected } from "../wallet/connectors"
 const Cryptr = require('cryptr');
 
 
@@ -15,7 +15,7 @@ var requestOptions = {
 
 const View =props => {
 
-  const { active, account, library, connector, activate, deactivate } = useWeb3React()
+  // const { active, account, library, connector, activate, deactivate } = useWeb3React()
   const [blog,setBlogs]=useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,8 +25,8 @@ const View =props => {
       const fetchBlogs=useCallback(async()=>{
         setIsLoading(true);
         setError(null);
-        await activate(injected)
-        if(active){
+        // await activate(injected)
+        if(true){
           try{
             const cryptr = new Cryptr('123');
             const decryptedString = cryptr.decrypt(params.id);
@@ -44,7 +44,7 @@ const View =props => {
           setIsLoading(false)
         }
         
-      },[active,account]);
+      },[]);
     useEffect(() => {
         fetchBlogs();
     }, [fetchBlogs])
