@@ -12,7 +12,7 @@ const client = create("https://ipfs.infura.io:5001/api/v0");
 
 const FileUpload = (props) => {
   const [name, setName] = useState("");
-  const [filename, setFilename] = useState("Choose a File");
+  const [filename, setFilename] = useState("Choose File");
   const [file, setFile] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
@@ -101,7 +101,6 @@ const FileUpload = (props) => {
           <img src={upload} alt="upload" className="up-img" />
           <div className="row">
             <div className="input_field">
-              {/* <h1>Upload Files</h1> */}
             </div>
             <div className="custom-file">
               <input

@@ -6,6 +6,7 @@ import Error from './pages/Error'
 import Create from './pages/Create'
 import Home from './pages/Home'
 import View from './pages/View'
+import Revoke from './pages/Revoke'
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path='/download/:id' exact>
             <View/>
+          </Route>
+          <Route path='/revoke/:id' exact>
+            <Revoke/>
           </Route>
 
           <Route path='*'>

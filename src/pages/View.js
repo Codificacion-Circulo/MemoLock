@@ -10,9 +10,6 @@ const View =props => {
     return (
       <Fragment>
         <section className={classes.info}>
-        <div className={classes.heading}>
-            <h1>Download</h1>
-        </div>
       <div className={classes.cards_wrapper}>
         <div className={classes.card_grid_space}>
           <Download id={params.id}/>

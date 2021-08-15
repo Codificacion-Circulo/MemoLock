@@ -452,6 +452,11 @@
   border: 2px solid #7856ff;
   transform: scale(1);
 }
+
+.tech-btn button:hover i {
+  color: white ;
+}
+
 .tech-btn button:hover a {
   color: white;
 }
@@ -581,5 +586,8 @@
   }
   .home-img2 {
     width: 48%;
+  }
+  .faq-body {
+    padding:2rem 1rem;
   }
 }

@@ -4,7 +4,7 @@ import "./FileUpload.css";
 import Web3 from 'web3'
 import { lock_addr,lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
-import download from "../images/download.png";
+import remove from '../images/remove.png';
 const Cryptr = require("cryptr");
 
 
@@ -20,7 +20,6 @@ const FileUpload = (props) => {
     const [error, setError] = useState(null);
     const [account, setAccount] = useState('');
     const [lockk,setLockk] = useState({})
-    const openLink = (url) => window.open(url,'download')?.focus();
     const loadBlockhainData=async()=>{
       const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
       const accounts=await web3.eth.getAccounts()
@@ -38,21 +37,16 @@ const FileUpload = (props) => {
 
           if(!name||!password){return}
             try{
-              const cryptr = new Cryptr(password);
-              const link=await lockk.methods.getlink(name-1).call()
-              const decryptedString = cryptr.decrypt(link);
-              const response = await fetch(`${decryptedString}`,requestOptions);
-              if (!response.ok) {
-                throw new Error('Something went wrong!');
-              }
-              const data = await response.url;
-              openLink(data)
+                console.log('started')
+              const recipt=await lockk.methods.removegrant(name,password).send({from: account})
+              console.log(recipt)
+            //   if (!response.ok) {
+            //     throw new Error('Something went wrong!');
+            //   }
             }catch(error){
               setError(error);
             }
             setUploading(false)
-  
-          
         };
 
       const nameChangeHandler = (event) => {
@@ -68,11 +62,11 @@ const FileUpload = (props) => {
       {uploading && <LoadingSpinner />}
       <div className="updown">
       <div className="img-con-down">
-        <img src={download} alt="upload" className="down-img" />
-      </div>
+          <img src={remove} alt="upload" className="down-img" />
+        </div>
         <form onSubmit={formSubmission} className="form-up">
           <div className="row">
-            <h2 className="details">Details</h2>
+            <h2 className="details">File ID</h2>
             <div className="input_field authtitle">
               <input
                 type="text"
@@ -86,13 +80,13 @@ const FileUpload = (props) => {
             </div>
           </div>
           <div className="row">
-            <h2 className="details">Password</h2>
+            <h2 className="details">Address</h2>
             <div className="input_field">
               <input
-                type="password"
+                type="text"
                 id="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Address"
                 required={true}
                 onChange={passwordChangeHandler}
                 value={password}
@@ -103,7 +97,7 @@ const FileUpload = (props) => {
           <div className="row">
             <input
               type="submit"
-              value="Download"
+              value="Revoke"
               className="btn"
               disabled={!password && !name}
             ></input>

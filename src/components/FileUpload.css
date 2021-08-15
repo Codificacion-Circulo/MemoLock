@@ -146,7 +146,7 @@
   border: 2px solid #05ffa1;
   border-radius: 4px;
   color: black;
-  padding: 15px 16px;
+  padding: 15px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -228,6 +228,7 @@
 
 @media (max-width: 1200px) {
   .form-up {
+
     padding-left: 0rem;
   }
   .img-con-up, .img-con-down  {
@@ -238,9 +239,6 @@
 }
 
 @media (max-width: 900px) {
-  .img-con-down {
-    display: none;
-  }
   .authtitle input {
     width: 100%;
   }
@@ -256,6 +254,10 @@
   }
   .form-up {
     margin-left: 0rem;
+    margin-top:3rem;
+  }
+  .btn{
+    margin-bottom: 3rem;
   }
 }
 
@@ -283,6 +285,9 @@
   #cpassword {
     width: 83%;
   }
+  .img-con-down{
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 445px) {
@@ -296,5 +301,8 @@
 
   .authtitle input {
     width: 85%;
+  }
+  .img-con-up{
+    margin-top: 5rem;
   }
 }

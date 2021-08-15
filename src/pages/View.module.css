@@ -6,7 +6,7 @@
     justify-content: center;
     max-width: 1160px;
     margin: 2rem auto;
-    margin-top:0;
+    margin-top:10rem;
     padding: 1rem 0rem;
     padding-top:0.5;
 }
@@ -46,12 +46,16 @@
 @media screen and (max-width: 1285px) {
   .cards_wrapper {
     grid-template-columns: 1fr 1fr;
+    margin: 2rem 4rem;
+    margin-top: 10rem;
   }
 }
 
 @media screen and (max-width: 900px) {
   .cards_wrapper {
     grid-template-columns: 1fr;
+    padding: 0rem;
+    margin-top: 7rem;
   }
   .info {
     justify-content: center;
@@ -60,11 +64,14 @@
     margin-left: 0;
     text-align: center;
   }
+
 }
 
 @media screen and (max-width: 500px) {
   .cards_wrapper {
-    padding: 4rem 2rem;
+    padding: 0rem 2rem;
+    margin: 0rem 0rem;
+    margin-top: 7rem;
   }
   .card {
     max-width: calc(100vw - 4rem);
@@ -74,7 +81,6 @@
 @media screen and (max-width: 450px) {
   .info {
     display: block;
-    text-align: center;
   }
   .info h1 {
     margin: 0;
