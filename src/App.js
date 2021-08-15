@@ -8,18 +8,6 @@ import Home from './pages/Home'
 import View from './pages/View'
 
 
-
-
-
-// import { Web3ReactProvider } from '@web3-react/core'
-// import Web3 from 'web3'
-
-
-// function getLibrary(provider) {
-//   return new Web3(provider)
-// }
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -40,10 +28,10 @@ function App() {
           <Route path='/home' exact>
             <Home />
           </Route>
-          <Route path='/create'>
+          <Route path='/upload' exact>
             <Create />
           </Route>
-          <Route path='/view/:id'>
+          <Route path='/download/:id' exact>
             <View/>
           </Route>
 
