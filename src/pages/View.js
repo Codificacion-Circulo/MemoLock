@@ -1,5 +1,6 @@
-import React, {useState,useCallback, useEffect} from 'react';
+import {Fragment,useState,useCallback, useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom'
+import LoadingSpinner from '../components/LoadingSpinner'
 import classes from './View.module.css'
 import { useWeb3React } from "@web3-react/core"
 import { injected } from "../wallet/connectors"
@@ -15,7 +16,7 @@ var requestOptions = {
 const View =props => {
 
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
-  const [blog,setBlogs]=useState([]);
+  const [blog,setBlogs]=useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const params = useParams();
@@ -34,7 +35,7 @@ const View =props => {
             if (!response.ok) {
               throw new Error('Something went wrong!');
             }
-            const data = await response.json();
+            const data = await response.url;
             console.log(data)
             setBlogs(data)
           }catch(error){
@@ -49,6 +50,8 @@ const View =props => {
     }, [fetchBlogs])
 
     return (
+      <Fragment>
+       {isLoading&&<LoadingSpinner/>}
         <section className={classes.info}>
         <div className={classes.heading}>
             <h1>{params.id}</h1>
@@ -58,6 +61,7 @@ const View =props => {
         </div>
         </div>
     </section>
+    </Fragment>
     );
 };
 

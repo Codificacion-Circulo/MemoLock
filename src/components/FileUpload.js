@@ -6,6 +6,8 @@ import Card from '../components/Card'
 import LoadingSpinner from './LoadingSpinner'
 const Cryptr = require('cryptr');
 const client = create('https://ipfs.infura.io:5001/api/v0')
+
+
 const FileUpload = props => {
     const [name,setName]= useState('');
     const [filename, setFilename] = useState('Choose a File');
@@ -16,6 +18,8 @@ const FileUpload = props => {
     const [message, setMessage] = useState('');
     const [uploading, setUploading] = useState(false);
     const [modal,setModal] = useState(false);
+
+
 
     const onChange = e => {
         setFile(e.target.files[0]);
@@ -31,8 +35,11 @@ const FileUpload = props => {
         setUploading(true);
         const cryptr = new Cryptr(cpassword);
         try {
-            const added = await client.add(file);
-            const url = `https://ipfs.infura.io/ipfs/${added.path}`
+            const options = {
+                wrapWithDirectory: true}
+            const files=[{ path:filename, content: file }];
+            const added = await client.add(files,options);
+            const url = `https://ipfs.infura.io/ipfs/${added.cid.toString()}/${filename}`
             console.log(url)
             const encryptedString = cryptr.encrypt(url);
             setLink(encryptedString)
