@@ -100,8 +100,8 @@ const FileUpload = (props) => {
       <div className="updown">
         <div className="img-con">
           <img src={upload} alt="upload" className="up-img" />
-          <div class="row">
-            <div class="input_field">
+          <div className="row">
+            <div className="input_field">
               {/* <h1>Upload Files</h1> */}
             </div>
             <div className="custom-file">
@@ -111,34 +111,34 @@ const FileUpload = (props) => {
                 id="customFile"
                 onChange={onChange}
               />
-              <label for="customFile">{filename}</label>
+              <label htmlFor="customFile">{filename}</label>
             </div>
           </div>
         </div>
         <form onSubmit={formSubmission} className="form-up">
-          <div class="row">
-            <h2 class="details">Reciver Details</h2>
-            <div class="input_field authtitle">
+          <div className="row">
+            <h2 className="details">Reciver Details</h2>
+            <div className="input_field authtitle">
               <input
                 type="text"
                 id="fname"
                 name="fname"
                 placeholder="Reciver's Account ID"
-                required="true"
+                required={true}
                 onChange={nameChangeHandler}
                 value={name}
               />
             </div>
           </div>
-          <div class="row">
-            <h2 class="details">Password</h2>
-            <div class="input_field">
+          <div className="row">
+            <h2 className="details">Password</h2>
+            <div className="input_field">
               <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Password"
-                required="true"
+                required={true}
                 onChange={passwordChangeHandler}
                 value={password}
               />
@@ -147,7 +147,7 @@ const FileUpload = (props) => {
                 id="cpassword"
                 name="cpassword"
                 placeholder="Confirm Password"
-                required="true"
+                required={true}
                 onChange={cpasswordChangeHandler}
                 value={cpassword}
                 disabled={!password}
@@ -155,14 +155,14 @@ const FileUpload = (props) => {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <input
               type="submit"
               value="Submit"
-              class="btn"
+              className="btn"
               disabled={!password === cpassword && name}
             ></input>
-            <Link to="/" class="btn">
+            <Link to="/" className="btn">
               Cancel
             </Link>
           </div>
