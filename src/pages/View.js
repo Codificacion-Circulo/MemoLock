@@ -1,11 +1,10 @@
 import {Fragment} from 'react';
 import {useParams} from 'react-router-dom'
-// import LoadingSpinner from '../components/LoadingSpinner'
+import Download from '../components/Download'
 import classes from './View.module.css'
 
 const View =props => {
 
-  // const { active, account, library, connector, activate, deactivate } = useWeb3React()
   const params = useParams();
 
     return (
