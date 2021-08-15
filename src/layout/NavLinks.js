@@ -11,7 +11,7 @@ function NavLinks(props) {
           <li>WRITE</li>
         </NavLink>
 
-        <NavLink to='/view' activeClassName={classes.active} style={{ textDecoration: 'none' }} onClick={() => props.isMobile && props.closeMobileMenu()}>
+        <NavLink to='/view/0' activeClassName={classes.active} style={{ textDecoration: 'none' }} onClick={() => props.isMobile && props.closeMobileMenu()}>
           <li>VIEW</li>
         </NavLink>
 

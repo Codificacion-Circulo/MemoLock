@@ -1,81 +1,79 @@
-import { Fragment, useState } from "react";
+import {Fragment,useState,useEffect,useCallback, useEffec } from "react";
+import {Link,useParams} from 'react-router-dom'
 import "./FileUpload.css";
-import { Link } from "react-router-dom";
 import { create } from "ipfs-http-client";
-import Card from "../components/Card";
+import Web3 from 'web3'
+import { lock_addr,lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
 import download from "../images/download.png";
 const Cryptr = require("cryptr");
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
+
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
 const FileUpload = (props) => {
-  const [name, setName] = useState("");
-  const [filename, setFilename] = useState("Choose a File");
-  const [file, setFile] = useState("");
-  const [password, setPassword] = useState("");
-  const [cpassword, setCPassword] = useState("");
-  const [link, setLink] = useState("");
-  const [message, setMessage] = useState("");
-  const [uploading, setUploading] = useState(false);
-  const [modal, setModal] = useState(false);
+    const [name,setName]=useState(props.id)
+    const [password,setPassword]=useState('')
+    const [uploading, setUploading] = useState(false);
+    const [error, setError] = useState(null);
+    const [account, setAccount] = useState('');
+    const [lockk,setLockk] = useState({})
+    const openLink = (url) => window.open(url,'download')?.focus();
+    const loadBlockhainData=async()=>{
+      const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
+      const accounts=await web3.eth.getAccounts()
+      setAccount(accounts[0])
+      console.log(account)
+      const lock=new web3.eth.Contract(lock_abi,lock_addr)
+      setLockk(lock)
+      
+    };
+    useEffect(() => {
+      loadBlockhainData();
+    },[account])
+    
+        const formSubmission=async(e)=>{
+          e.preventDefault();
+          setUploading(true);
 
-  const onChange = (e) => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
-  };
+          if(!name||!password){return}
+            try{
+              const cryptr = new Cryptr(password);
+              console.log('started')
+              const link=await lockk.methods.getlink(name-1).call()
+              console.log(link)
+              const decryptedString = cryptr.decrypt(link);
+              console.log(decryptedString)
+              const response = await fetch(`${decryptedString}`,requestOptions);
+              if (!response.ok) {
+                throw new Error('Something went wrong!');
+              }
+              const data = await response.url;
+              console.log(data)
+              openLink(data)
+            }catch(error){
+              setError(error);
+            }
+            setUploading(false)
+  
+          
+        };
 
-  const formSubmission = async (e) => {
-    e.preventDefault();
-    if (!password === cpassword && name && file) {
-      console.log("not met");
-      return;
-    }
-    setUploading(true);
-    const cryptr = new Cryptr(cpassword);
-    try {
-      const options = {
-        wrapWithDirectory: true,
+      const nameChangeHandler = (event) => {
+        setName(event.target.value);
       };
-      const files = [{ path: filename, content: file }];
-      const added = await client.add(files, options);
-      const url = `https://ipfs.infura.io/ipfs/${added.cid.toString()}/${filename}`;
-      console.log(url);
-      const encryptedString = cryptr.encrypt(url);
-      setLink(encryptedString);
-      setMessage("File Uploaded");
-    } catch (error) {
-      console.log("Error uploading file: ", error);
-      setMessage(error);
-    }
-    setTimeout(() => setMessage(""), 10000);
-    setName("");
-    setCPassword("");
-    setPassword("");
-    setFilename("Choose a file");
-    setFile("");
-    setUploading(false);
-    setModal(true);
-  };
-
-  const nameChangeHandler = (event) => {
-    setName(event.target.value);
-  };
-
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const cpasswordChangeHandler = (event) => {
-    setCPassword(event.target.value);
-  };
-  const modalChangeHandler = () => {
-    setModal(false);
-  };
+    
+      const passwordChangeHandler = (event) => {
+        setPassword(event.target.value);
+      };
 
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
-      {modal && <Card onClose={modalChangeHandler} link={link} />}
       <div className="updown">
         <form onSubmit={formSubmission} className="form-down">
           <div class="row">
@@ -85,7 +83,7 @@ const FileUpload = (props) => {
                 type="text"
                 id="fname"
                 name="fname"
-                placeholder="File Name"
+                placeholder="File ID"
                 required="true"
                 onChange={nameChangeHandler}
                 value={name}
@@ -112,7 +110,7 @@ const FileUpload = (props) => {
               type="submit"
               value="Download"
               class="btn"
-              disabled={!password === cpassword && name}
+              disabled={!password && !name}
             ></input>
             <Link to="/" class="btn">
               Cancel
@@ -121,23 +119,8 @@ const FileUpload = (props) => {
         </form>
         <div className="img-con">
           <img src={download} alt="upload" className="down-img" />
-          <div class="row">
-            <div class="input_field">
-              {/* <h1>Upload Files</h1> */}
-            </div>
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="customFile"
-                onChange={onChange}
-              />
-              {/* <label for="customFile">{filename}</label> */}
-            </div>
-          </div>
         </div>
       </div>
-      <p>{message}</p>
     </Fragment>
   );
 };

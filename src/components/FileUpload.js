@@ -44,7 +44,7 @@ const FileUpload = (props) => {
   const formSubmission = async (e) => {
     e.preventDefault();
     if (!password === cpassword && name && file) {
-      console.log("not met");
+      console.log("Please Fill the correct Details");
       return;
     }
     
