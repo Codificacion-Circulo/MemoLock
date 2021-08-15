@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { create } from "ipfs-http-client";
 import Card from "../components/Card";
 import LoadingSpinner from "./LoadingSpinner";
-import upload from "../images/upload.png";
+import download from "../images/download.png";
 const Cryptr = require("cryptr");
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
-const FileUpload = (props) => {
+const Download = (props) => {
   const [name, setName] = useState("");
   const [filename, setFilename] = useState("Choose a File");
   const [file, setFile] = useState("");
@@ -60,13 +60,8 @@ const FileUpload = (props) => {
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
-
   const passwordChangeHandler = (event) => {
     setPassword(event.target.value);
-  };
-
-  const cpasswordChangeHandler = (event) => {
-    setCPassword(event.target.value);
   };
   const modalChangeHandler = () => {
     setModal(false);
@@ -78,7 +73,7 @@ const FileUpload = (props) => {
       {modal && <Card onClose={modalChangeHandler} link={link} />}
       <form onSubmit={formSubmission}>
         <div class="row">
-          <h2 class="details">Details</h2>
+          <h2 class="details">Link</h2>
           <div class="input_field authtitle">
             <input
               type="text"
@@ -103,44 +98,34 @@ const FileUpload = (props) => {
               onChange={passwordChangeHandler}
               value={password}
             />
-            <input
-              type="password"
-              id="cpassword"
-              name="cpassword"
-              placeholder="Confirm Password"
-              required="true"
-              onChange={cpasswordChangeHandler}
-              value={cpassword}
-              disabled={!password}
-            />
           </div>
         </div>
 
         <div class="row">
           <div class="input_field">
-            <h1>Upload Files</h1>
+            <h1>Download Files</h1>
           </div>
           <div className="custom-file">
-            <img src={upload} alt="upload" />
+            <img src={download} alt="download" />
             <input
               type="file"
               className="custom-file-input"
               id="customFile"
               onChange={onChange}
             />
-            <label for="customFile">{filename}</label>
+            {/* <label for="customFile">{filename}</label> */}
+            <div class="row">
+              <input
+                type="submit"
+                value="Download"
+                class="btn"
+                disabled={!password === cpassword && name}
+              ></input>
+              <Link to="/" class="btn">
+                Cancel
+              </Link>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <input
-            type="submit"
-            value="Submit"
-            class="btn"
-            disabled={!password === cpassword && name}
-          ></input>
-          <Link to="/" class="btn">
-            Cancel
-          </Link>
         </div>
       </form>
       <p>{message}</p>
@@ -148,4 +133,4 @@ const FileUpload = (props) => {
   );
 };
 
-export default FileUpload;
+export default Download;
