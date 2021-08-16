@@ -30,7 +30,6 @@ const FileUpload = (props) => {
     setAccount(accounts[0])
     const lock=new web3.eth.Contract(lock_abi,lock_addr)
     setLockk(lock)
-    
   };
   useEffect(() => {
     loadBlockhainData();
@@ -44,7 +43,7 @@ const FileUpload = (props) => {
   const formSubmission = async (e) => {
     e.preventDefault();
     if (!password === cpassword || !name || !file) {
-      console.log("Please Fill the correct Details");
+      setMessage("Please Fill the correct Details");
       return;
     }
     
@@ -57,17 +56,15 @@ const FileUpload = (props) => {
       const files = [{ path: filename, content: file }];
       const added = await client.add(files, options);
       const url = `https://ipfs.infura.io/ipfs/${added.cid.toString()}/${filename}`;
-      console.log(url);
       const encryptedString = cryptr.encrypt(url);
-      console.log(name)
       const recipt=await lockk.methods.fileURI(encryptedString,name).send({from:account})
       console.log(recipt);
       const tokenId=await lockk.methods.tokenCounter().call()
-      console.log(tokenId);
       setCount(tokenId);
-      setMessage("File Uploaded");
+      setModal(true);
     } catch (error) {
       console.log("Error uploading file: ", error);
+      setMessage("Something went Wrong!");
     }
     setTimeout(() => setMessage(""), 10000);
     setName("");
@@ -76,7 +73,6 @@ const FileUpload = (props) => {
     setFilename("Choose a file");
     setFile("");
     setUploading(false);
-    setModal(true);
   };
 
   const nameChangeHandler = (event) => {
@@ -93,10 +89,14 @@ const FileUpload = (props) => {
   const modalChangeHandler = () => {
     setModal(false);
   };
+  const messageChangeHandler = () => {
+    setMessage(null);
+  };
 
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
+      {message && <Card onClose={messageChangeHandler} msg={message}/>}
       {modal && <Card onClose={modalChangeHandler} link={count} />}
       <div className="updown">
         <div className="img-con-up">
@@ -160,7 +160,7 @@ const FileUpload = (props) => {
               type="submit"
               value="Submit"
               className="btn"
-              disabled={!password === cpassword && name}
+              disabled={!password === cpassword || !name || !file}
             ></input>
             <Link to="/" className="btn">
               Cancel
