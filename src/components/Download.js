@@ -13,7 +13,7 @@ var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
-const FileUpload = (props) => {
+const Download = (props) => {
     const [name,setName]=useState(props.id)
     const [password,setPassword]=useState('')
     const [uploading, setUploading] = useState(false);
@@ -118,4 +118,4 @@ const FileUpload = (props) => {
   );
 };
 
-export default FileUpload;
+export default Download;

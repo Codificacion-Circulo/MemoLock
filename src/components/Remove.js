@@ -37,7 +37,8 @@ const Remove = (props) => {
     setUploading(true);
     try {
       console.log('started')
-      const recipt = await lockk.methods.removegrant(name,password).send({ from: account })
+      console.log(name,password,account)
+      const recipt = await lockk.methods.removegrant(name-1,password).send({ from: account})
       console.log(recipt)
     } catch (err) {
       setError(err);
