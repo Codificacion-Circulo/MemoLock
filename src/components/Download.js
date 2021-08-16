@@ -119,7 +119,7 @@ const Download = (props) => {
               type="submit"
               value="Download"
               className="btn"
-              disabled={!password || !name ||account}
+              disabled={!password || !name ||!account}
             ></input>
             <Link to="/" className="btn">
               Cancel
