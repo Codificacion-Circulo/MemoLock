@@ -7,6 +7,9 @@
     font-size: 1rem;
     margin: 1rem 0;
   }
+  .total p{
+    color:#05ffa1;
+  }
   
   .actions {
     text-align: right;
@@ -31,11 +34,12 @@
     color: #ffff00;
     font-size: 1.5rem;
     font-weight: bold;
-
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
   }
 
   .Headspan{
-    color: white;
+    color: #3fbce8;
     font-size: 1rem;
     font-weight: 300;
   }
