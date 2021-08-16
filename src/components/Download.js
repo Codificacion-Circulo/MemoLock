@@ -52,8 +52,12 @@ const Download = (props) => {
               }
               const data = await response.url;
               openLink(data)
+              setName('')
+              setPassword('')
             }catch(error){
               setError('Something went wrong !');
+              setPassword('')
+              setName('')
               console.log(error)
             }
             setUploading(false)
@@ -115,7 +119,7 @@ const Download = (props) => {
               type="submit"
               value="Download"
               className="btn"
-              disabled={!password && !name}
+              disabled={!password || !name ||account}
             ></input>
             <Link to="/" className="btn">
               Cancel

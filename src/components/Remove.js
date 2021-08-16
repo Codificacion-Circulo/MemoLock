@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import "./FileUpload.css";
+import Card from "./Card"
 import Web3 from 'web3'
 import { lock_addr, lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
@@ -31,18 +32,20 @@ const Remove = (props) => {
   const formSubmission = async (e) => {
     e.preventDefault();
     if (!password || !name) {
-      console.log("Please Fill the correct Details");
+      setError("Please Fill the correct Details");
       return;
     }
     setUploading(true);
     try {
-      console.log('started')
-      console.log(name,password,account)
       const recipt = await lockk.methods.removegrant(name-1,password).send({ from: account})
       console.log(recipt)
+      setPassword('')
+      setName('')
     } catch (err) {
-      setError(err);
-      console.log(error)
+      setError('Something went wrong !');
+      setPassword('')
+      setName('')
+      console.log(err)
     }
     setUploading(false)
   };
@@ -54,10 +57,14 @@ const Remove = (props) => {
   const passwordChangeHandler = (event) => {
     setPassword(event.target.value);
   };
+  const messageChangeHandler = () => {
+    setError(null);
+  };
 
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
+      {error && <Card onClose={messageChangeHandler} msg={error} />}
       <div className="updown">
         <div className="img-con-down">
           <img src={remove} alt="upload" className="down-img" />
@@ -97,7 +104,7 @@ const Remove = (props) => {
               type="submit"
               value="Revoke"
               className="btn"
-              disabled={!password && !name}
+              disabled={!password || !name || !account}
             ></input>
             <Link to="/" className="btn">
               Cancel
