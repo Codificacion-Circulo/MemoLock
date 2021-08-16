@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# MEMOLOCK
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Secure Document Saving and Sharing Using IPFS, Blockchain and Encryption.
+-   One of the first decentralised file sharing system.
+-   First file sharing system using IPFS, Blockchain and Data Encryption
+-   Decentralised, Distributed, Secure
 
-In the project directory, you can run:
+# Get Started
+*Requirements*
+ 
 
-### `npm start`
+ - [x] Ganache for Local Blockchain
+ - [x] Metamask Wallet
+ - [x] Network setup on Local Blockchain
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ *Clone the repository to your loacal machine*
+ 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    git clone https://github.com/aptgetinfo/MemoLock.git
+    
+ *Change Directory to the base folder*
+ 
 
-### `npm test`
+    cd MemoLock
+  *Install the Dependencies*
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    npm install
+ *Run the Development Environment*
+ 
 
-### `npm run build`
+    npm start
+    
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+MemoLock stores your files in a distributed way on IPFS, and stores the Encrypted content ID on Blockchain.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## IPFS
 
-### `npm run eject`
+-   InterPlanetary File System peer-to-peer network for storing and sharing data in a distributed manner.
+    
+-   Distributed and Decentralised File Sharing system
+    
+-   A file gets divided into pieces and gets distributed whole over internet
+    
+-   Files gets encrypted and gets uploaded
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Blockchain
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a business network.
+    
+-   Distributed Decentralised network helps in easy transfer of file.
+    
+-   The project is built on ethereum and ensures security through a smart contract.
+## Encryption
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-   Transport-encryption is used when sending data between two parties.
+    
+-   We are using AES-256-GCM standard for encrypting the files.
+    
+-   The key is provided by the user thus making it full secure.
+# Working Explanation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  Files uploaded to IPFS
+    
+2.  Encrypted by the key provided
+    
+3.  Address is granted access in smart contract
+    
+4.  Receiver enters the token number and file password
+    
+5.  File is fetched and opened in new tab to view or download.
+# Notable Features
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   The file goes under 3 way security system, making it highly secure.
+    
+-   No signups to get started, just a MetaMask wallet and gas fees.
+    
+-   You provide a key to encrypt the file thus no one can access the file.
+    
+-   Want to revoke access to file don’t worry we have got you covered with revoke feature.
+    
+-   File gets stored in distributed format over multiple number of nodes.
+    
+-   Files get deleted over time.
