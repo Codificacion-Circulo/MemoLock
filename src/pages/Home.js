@@ -16,7 +16,7 @@ const Home = () => {
         <div className="home-con">
           <h1>
             Securing files and preserving it on
-            the blockchain.
+            the Distributed Web.
           </h1>
           <h2>Easily share files with anyone, access anywhere and anytime</h2>
           <div className="home-img">
@@ -117,7 +117,7 @@ const Home = () => {
           </div>
           <div className="tech-btn">
             <button>
-              <a href="ipfs.com">Know More</a>
+              <a href="https://ipfs-io.ipns.dweb.link/">Know More</a>
               <i className="fas fa-arrow-right"></i>
             </button>
           </div>
