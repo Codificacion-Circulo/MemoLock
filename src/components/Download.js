@@ -4,6 +4,7 @@ import "./FileUpload.css";
 import Web3 from 'web3'
 import { lock_addr,lock_abi } from "../wallet/config";
 import LoadingSpinner from "./LoadingSpinner";
+import Card from "./Card";
 import download from "../images/download.png";
 const Cryptr = require("cryptr");
 
@@ -37,7 +38,10 @@ const Download = (props) => {
           e.preventDefault();
           setUploading(true);
 
-          if(!name||!password){return}
+          if(!name||!password){
+            setError('Please Fill the correct Details')
+            return
+          }
             try{
               const cryptr = new Cryptr(password);
               const link=await lockk.methods.getlink(name-1).call()
@@ -49,7 +53,8 @@ const Download = (props) => {
               const data = await response.url;
               openLink(data)
             }catch(error){
-              setError(error);
+              setError('Something went wrong !');
+              console.log(error)
             }
             setUploading(false)
   
@@ -63,10 +68,14 @@ const Download = (props) => {
       const passwordChangeHandler = (event) => {
         setPassword(event.target.value);
       };
+      const messageChangeHandler = () => {
+        setError(null);
+      };
 
   return (
     <Fragment>
       {uploading && <LoadingSpinner />}
+      {error && <Card onClose={messageChangeHandler} msg={error} />}
       <div className="updown">
       <div className="img-con-down">
         <img src={download} alt="upload" className="down-img" />
