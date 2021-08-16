@@ -117,13 +117,13 @@ const FileUpload = (props) => {
         </div>
         <form onSubmit={formSubmission} className="form-up">
           <div className="row">
-            <h2 className="details">Reciver Details</h2>
+            <h2 className="details">Receiver Details</h2>
             <div className="input_field authtitle">
               <input
                 type="text"
                 id="fname"
                 name="fname"
-                placeholder="Reciver's Account ID"
+                placeholder="Receiver's Account ID"
                 required={true}
                 onChange={nameChangeHandler}
                 value={name}
