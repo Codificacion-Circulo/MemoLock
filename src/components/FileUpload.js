@@ -18,7 +18,7 @@ const FileUpload = (props) => {
   const [cpassword, setCPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const [account, setAccount] = useState('');
   const [lockk,setLockk] = useState({})
   const [count,setCount] = useState(0)
